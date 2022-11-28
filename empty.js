@@ -30,3 +30,21 @@ Function.prototype.myBind = function(context, ...bindArgs) {
     }
 }
 
+Function.prototype.myCurry = function(numsArg) {
+    let fnc = this
+    let nums = []
+    return function _myCurry(num) {
+        nums.push(num)
+        if (nums.length < numsArg) {
+            return _myCurry       
+        } else {
+            return fnc(...nums)
+        }
+    }
+}
+
+function sumThree(num1, num2, num3) {
+    return num1 + num2 + num3;
+}
+
+
